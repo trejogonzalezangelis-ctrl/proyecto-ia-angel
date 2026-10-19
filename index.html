@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Angel Trejo González | Portafolio Cyberpunk · Desarrollador Web</title>
+  <meta name="description" content="Portafolio profesional de Angel Trejo González: desarrollo web, apps y diseño UI/UX con estética cyberpunk.">
+  <meta name="author" content="Angel Trejo González">
+  <meta name="theme-color" content="#05060f">
+  <meta property="og:title" content="Angel Trejo González | Portafolio Cyberpunk">
+  <meta property="og:description" content="Desarrollo web, apps y diseño con estética cyberpunk.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <style>
+    :root, [data-bs-theme="dark"] {
+      --bg: #05060f;
+      --surface: rgba(10, 14, 30, .86);
+      --text: #e8f1ff;
+      --muted: #b4c0dc;
+      --accent: #00f0ff;
+      --accent-2: #ff3df0;
+      --btn-text: #05060f;
+      --border: rgba(0, 240, 255, .55);
+      --matrix: #00ff9c;
+      --matrix-opacity: .30;
+      --glow: 0 0 14px rgba(0, 240, 255, .45);
+      --bs-body-bg: var(--bg);
+      --bs-body-color: var(--text);
+    }
+    [data-bs-theme="light"] {
+      --bg: #f3f5ff;
+      --surface: rgba(255, 255, 255, .93);
+      --text: #0a0f24;
+      --muted: #3a4566;
+      --accent: #0049b7;
+      --accent-2: #a1007f;
+      --btn-text: #ffffff;
+      --border: rgba(0, 73, 183, .6);
+      --matrix: #0a3d91;
+      --matrix-opacity: .16;
+      --glow: 0 0 10px rgba(0, 73, 183, .22);
+      --bs-body-bg: var(--bg);
+      --bs-body-color: var(--text);
+    }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body { font-family: "Share Tech Mono", ui-monospace, monospace; font-size: 1.05rem; line-height: 1.65; background: var(--bg); color: var(--text); transition: background .3s, color .3s; }
+    h1, h2, h3, h4, .navbar-brand { font-family: "Orbitron", sans-serif; letter-spacing: .04em; }
+    a { color: var(--accent); }
+    .text-muted-c { color: var(--muted); }
+    :focus-visible { outline: 3px solid var(--accent-2); outline-offset: 3px; }
+
+    #matrix { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; opacity: var(--matrix-opacity); pointer-events: none; }
+
+    .skip { position: absolute; left: -999px; top: 0; background: var(--accent); color: var(--btn-text); padding: .5rem 1rem; z-index: 2000; }
+    .skip:focus { left: 0; }
+
+    .navbar { background: var(--surface); border-bottom: 1px solid var(--border); backdrop-filter: blur(8px); }
+    .navbar-brand { color: var(--accent) !important; font-weight: 700; text-shadow: var(--glow); }
+    .navbar .nav-link { color: var(--text); border-bottom: 2px solid transparent; }
+    .navbar .nav-link:hover, .navbar .nav-link:focus-visible { color: var(--accent); border-color: var(--accent-2); }
+    .navbar-toggler { border-color: var(--border); }
+    .navbar-toggler-icon { background-image: none; display: inline-flex; align-items: center; justify-content: center; color: var(--text); }
+    .navbar-toggler-icon::before { content: "☰"; font-size: 1.4rem; line-height: 1; }
+
+    .btn-cyber { background: var(--accent); color: var(--btn-text); border: 2px solid var(--accent); font-weight: 700; border-radius: 8px; transition: transform .15s, box-shadow .15s; }
+    .btn-cyber:hover, .btn-cyber:focus-visible { background: var(--accent); color: var(--btn-text); transform: translateY(-2px); box-shadow: var(--glow); }
+    .btn-ghost { background: transparent; color: var(--accent); border: 2px solid var(--accent); font-weight: 700; border-radius: 8px; }
+    .btn-ghost:hover, .btn-ghost:focus-visible { background: var(--accent); color: var(--btn-text); box-shadow: var(--glow); }
+    .btn-icon { background: transparent; color: var(--text); border: 1px solid var(--border); border-radius: 8px; width: 44px; height: 44px; font-size: 1.2rem; }
+    .btn-icon:hover { box-shadow: var(--glow); }
+
+    section { padding: 4.5rem 0; }
+    .section-title { color: var(--accent); text-shadow: var(--glow); margin-bottom: 2rem; font-size: clamp(1.5rem, 4vw, 2.2rem); }
+    .section-title::before { content: "// "; color: var(--accent-2); }
+
+    /* Hero */
+    .hero { min-height: 90vh; display: flex; align-items: center; padding-top: 6rem; }
+    .eyebrow { color: var(--accent); }
+    .cursor { animation: blink 1s steps(2) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .hero h1 { font-size: clamp(2rem, 6vw, 3.8rem); font-weight: 900; text-shadow: var(--glow); }
+    .hero .role { color: var(--accent-2); font-size: clamp(1.1rem, 2.6vw, 1.6rem); font-family: "Orbitron", sans-serif; }
+    .avatar-wrap { position: relative; width: min(280px, 70vw); aspect-ratio: 1; margin-inline: auto; border-radius: 50%; padding: 6px; background: conic-gradient(var(--accent), var(--accent-2), var(--accent)); box-shadow: var(--glow); animation: spin-glow 8s linear infinite; }
+    .avatar-wrap img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 4px solid var(--bg); background: var(--bg); }
+    @keyframes spin-glow { 50% { box-shadow: 0 0 28px var(--accent-2); } }
+
+    .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--glow); }
+
+    /* Stack */
+    .tech-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem .6rem; text-align: center; height: 100%; transition: transform .2s, box-shadow .2s; }
+    .tech-card:hover { transform: translateY(-5px); box-shadow: 0 0 20px var(--accent), 0 0 6px var(--accent-2); }
+    .tech-card img { width: 52px; height: 52px; object-fit: contain; background: #fff; border-radius: 10px; padding: 6px; }
+    .tech-card span { display: block; margin-top: .6rem; color: var(--text); font-size: .95rem; }
+
+    /* Proyectos */
+    .filter { background: transparent; color: var(--text); border: 1px solid var(--border); border-radius: 999px; padding: .4rem 1.2rem; font: inherit; }
+    .filter.active, .filter:hover { background: var(--accent); color: var(--btn-text); }
+    .project-item.hide { display: none; }
+    .card-cyber { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 12px; height: 100%; transition: transform .2s, box-shadow .2s; overflow: hidden; }
+    .card-cyber:hover { transform: translateY(-4px); box-shadow: var(--glow); }
+    .card-cyber .thumb { aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; font-size: 3rem; background: linear-gradient(135deg, rgba(0,240,255,.18), rgba(255,61,240,.18)); border-bottom: 1px solid var(--border); }
+    .card-cyber .card-body p { color: var(--muted); }
+    .tag { color: var(--accent-2); font-weight: 700; text-transform: uppercase; font-size: .85rem; }
+
+    /* Experiencia: centradas y auto-ajustables */
+    .exp-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+    .exp-row .card-cyber { flex: 1 1 280px; max-width: 360px; }
+    .exp-row .card-body h3 { font-size: 1.15rem; color: var(--accent); }
+    .period { color: var(--accent-2); font-size: .9rem; }
+
+    /* Videos */
+    .ratio-wrap { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    figure { margin: 0; }
+    figcaption { color: var(--muted); margin-top: .5rem; }
+
+    /* Formulario */
+    .form-control { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
+    .form-control:focus { background: var(--bg); color: var(--text); border-color: var(--accent); box-shadow: var(--glow); }
+    label { font-weight: 700; }
+    #form-status { min-height: 1.5rem; font-weight: 700; }
+    #form-status.ok { color: var(--accent); }
+    #form-status.error { color: var(--accent-2); }
+
+    /* Footer luminoso: siempre oscuro para que los colores brillantes tengan contraste en ambos temas */
+    footer { background: #05060f; border-top: 2px solid #00f0ff; box-shadow: 0 -4px 24px rgba(0, 240, 255, .25); color: #e8f1ff; padding: 2.5rem 0 2rem; text-align: center; }
+    footer .footer-title { font-family: "Orbitron", sans-serif; color: #ffffff; text-shadow: 0 0 10px #38bdf8; font-size: 1.1rem; letter-spacing: .08em; margin-bottom: 1.2rem; }
+    .social { list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    .social a { --c: #ffffff; width: 52px; height: 52px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid var(--c); color: var(--c); background: rgba(255, 255, 255, .04); font-size: 1.4rem; text-decoration: none; text-shadow: 0 0 8px var(--c); box-shadow: 0 0 10px var(--c), inset 0 0 8px rgba(255, 255, 255, .08); transition: transform .2s, box-shadow .2s, background .2s, color .2s; }
+    .social a:hover, .social a:focus-visible { transform: translateY(-4px) scale(1.08); background: var(--c); color: #05060f; text-shadow: none; box-shadow: 0 0 22px var(--c), 0 0 6px #ffffff; }
+    .social a svg { width: 1.3rem; height: 1.3rem; fill: currentColor; }
+    .c-white { --c: #ffffff; } .c-sky { --c: #7dd3fc; } .c-cyan { --c: #00f0ff; } .c-yellow { --c: #ffe600; }
+    footer .copy { color: #c9d6f2; margin: 0; }
+    #back-to-top { position: fixed; right: 1.2rem; bottom: 1.2rem; z-index: 1500; width: 52px; height: 52px; border-radius: 50%; border: 2px solid #ffe600; background: #05060f; color: #ffe600; font-size: 1.3rem; cursor: pointer; box-shadow: 0 0 14px #ffe600; opacity: 0; visibility: hidden; transform: translateY(12px); transition: opacity .25s, transform .25s, visibility .25s, background .2s, color .2s; }
+    #back-to-top.show { opacity: 1; visibility: visible; transform: none; }
+    #back-to-top:hover, #back-to-top:focus-visible { background: #ffe600; color: #05060f; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+  <script>
+    try { var t = localStorage.getItem("theme"); if (t) document.documentElement.setAttribute("data-bs-theme", t); } catch (e) {}
+  </script>
+</head>
+<body>
+  <canvas id="matrix" aria-hidden="true"></canvas>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top" aria-label="Principal">
+    <div class="container">
+      <a class="navbar-brand" href="#inicio">&lt;AngelTrejo/&gt;</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="#sobre-mi">Sobre mí</a></li>
+          <li class="nav-item"><a class="nav-link" href="#stack">Stack</a></li>
+          <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experiencia">Experiencia</a></li>
+          <li class="nav-item"><a class="nav-link" href="#videos">Videos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://github.com/trejogonzalezangelis-ctrl" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://vercel.com/angel-7d1b" target="_blank" rel="noopener noreferrer">Vercel</a></li>
+          <li class="nav-item ms-lg-2 my-2 my-lg-0">
+            <button id="theme-toggle" class="btn-icon" type="button" aria-label="Cambiar a modo claro" aria-pressed="false"><span id="theme-icon">☀️</span></button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="contenido">
+    <!-- HERO -->
+    <header id="inicio" class="hero">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-7 order-2 order-lg-1">
+            <p class="eyebrow mb-2">&gt; sistema_en_linea<span class="cursor">_</span></p>
+            <h1>Angel Trejo González</h1>
+            <p class="role mb-3">Desarrollador Web &amp; Diseñador UI/UX</p>
+            <p class="text-muted-c" style="max-width:60ch">Apasionado por la tecnología y la inteligencia artificial. Construyo experiencias web rápidas, accesibles y responsivas con una estética cyberpunk. Este portafolio fue generado con ayuda de IA y refinado manualmente.</p>
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <a class="btn btn-cyber px-4 py-2" href="#proyectos">Ver proyectos</a>
+              <a class="btn btn-ghost px-4 py-2" href="https://github.com/trejogonzalezangelis-ctrl" target="_blank" rel="noopener noreferrer">Mi GitHub</a>
+              <a class="btn btn-ghost px-4 py-2" href="https://vercel.com/angel-7d1b" target="_blank" rel="noopener noreferrer">Mi Vercel</a>
+            </div>
+          </div>
+          <div class="col-lg-5 order-1 order-lg-2">
+            <div class="avatar-wrap">
+              <img src="https://github.com/trejogonzalezangelis-ctrl.png?size=400" alt="Foto de perfil de Angel Trejo González" width="400" height="400"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23050a1e%22/%3E%3Ctext x=%2250%22 y=%2260%22 font-size=%2236%22 text-anchor=%22middle%22 fill=%22%2300f0ff%22 font-family=%22monospace%22%3EAT%3C/text%3E%3C/svg%3E'">
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SOBRE MÍ -->
+    <section id="sobre-mi">
+      <div class="container">
+        <h2 class="section-title">Sobre mí</h2>
+        <div class="panel p-4">
+          <p class="mb-0">Estudiante de desarrollo de software enfocado en el frontend moderno. Me gusta el diseño minimalista, el código limpio y las buenas prácticas de accesibilidad y SEO. Publico mis proyectos en GitHub y los despliego en GitHub Pages y Vercel.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <section id="stack">
+      <div class="container">
+        <h2 class="section-title">Stack tecnológico</h2>
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-3" id="stack-grid"></div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="proyectos">
+      <div class="container">
+        <h2 class="section-title">Proyectos</h2>
+        <div class="d-flex flex-wrap gap-2 mb-4" role="group" aria-label="Filtrar proyectos">
+          <button class="filter active" data-filter="all" type="button" aria-pressed="true">Todos</button>
+          <button class="filter" data-filter="web" type="button" aria-pressed="false">Web</button>
+          <button class="filter" data-filter="app" type="button" aria-pressed="false">App</button>
+          <button class="filter" data-filter="diseno" type="button" aria-pressed="false">Diseño</button>
+        </div>
+        <div class="row g-4" id="project-grid">
+          <div class="col-md-6 col-lg-4 project-item" data-category="web"><article class="card card-cyber"><div class="thumb" aria-hidden="true">🌐</div><div class="card-body"><span class="tag">Web</span><h3 class="h5 mt-1">Portafolio Cyberpunk</h3><p>Sitio personal con fondo Matrix, modo Dark/Light y formulario de contacto.</p><a href="https://github.com/trejogonzalezangelis-ctrl" target="_blank" rel="noopener noreferrer">Ver en GitHub →</a></div></article></div>
+          <div class="col-md-6 col-lg-4 project-item" data-category="web"><article class="card card-cyber"><div class="thumb" aria-hidden="true">🛒</div><div class="card-body"><span class="tag">Web</span><h3 class="h5 mt-1">Tienda en Línea</h3><p>Catálogo con carrito de compras hecho con JavaScript puro y Bootstrap.</p><a href="https://github.com/trejogonzalezangelis-ctrl" target="_blank" rel="noopener noreferrer">Ver en GitHub →</a></div></article></div>
+          <div class="col-md-6 col-lg-4 project-item" data-category="web"><article class="card card-cyber"><div class="thumb" aria-hidden="true">🚀</div><div class="card-body"><span class="tag">Web</span><h3 class="h5 mt-1">Landing Page Neón</h3><p>Página de aterrizaje responsive optimizada para SEO y rendimiento.</p><a href="https://github.com/trejogonzalezangelis-ctrl" target="_blank" rel="noopener noreferrer">Ver en GitHub →</a></div></article></div>
+          <div class="col-md-6 col-lg-4 project-item" data-category="app"><article class="card card-cyber"><div class="thumb" aria-hidden="true">✅</div><div class="card-body"><span class="tag">App</span><h3 class="h5 mt-1">Gestor de Tareas</h3><p>App de productividad con almacenamiento local y modo oscuro.</p><a href="https://github.com/trejogonzalezangelis-ctrl" target="_blank" rel="noopener noreferrer">Ver en GitHub →</a></div></article></div>
+          <div class="col-md-6 col-lg-4 project-item" data-category="app"><article class="card card-cyber"><div class="thumb" aria-hidden="true">🤖</div><div class="card-body"><span class="tag">App</span><h3 class="h5 mt-1">Chatbot con IA</h3><p>Asistente conversacional conectado a una API de inteligencia artificial.</p><a href="https://github.com/trejogonzalezangelis-ctrl" target="_blank" rel="noopener noreferrer">Ver en GitHub →</a></div></article></div>
+          <div class="col-md-6 col-lg-4 project-item" data-category="app"><article class="card card-cyber"><div class="thumb" aria-hidden="true">🌦️</div><div class="card-body"><span class="tag">App</span><h3 class="h5 mt-1">App del Clima</h3><p>Consulta el clima por ciudad consumiendo una API pública.</p><a href="https://github.com/trejogonzalezangelis-ctrl" target="_blank" rel="noopener noreferrer">Ver en GitHub →</a></div></article></div>
+          <div class="col-md-6 col-lg-4 project-item" data-category="diseno"><article class="card card-cyber"><div class="thumb" aria-hidden="true">🎨</div><div class="card-body"><span class="tag">Diseño</span><h3 class="h5 mt-1">Identidad Visual Cyber</h3><p>Logotipo, paleta y componentes para una marca tecnológica.</p><a href="https://github.com/trejogonzalezangelis-ctrl" target="_blank" rel="noopener noreferrer">Ver en GitHub →</a></div></article></div>
+          <div class="col-md-6 col-lg-4 project-item" data-category="diseno"><article class="card card-cyber"><div class="thumb" aria-hidden="true">🧩</div><div class="card-body"><span class="tag">Diseño</span><h3 class="h5 mt-1">UI Kit Futurista</h3><p>Prototipo en Figma con más de 40 componentes reutilizables.</p><a href="https://github.com/trejogonzalezangelis-ctrl" target="_blank" rel="noopener noreferrer">Ver en GitHub →</a></div></article></div>
+          <div class="col-md-6 col-lg-4 project-item" data-category="diseno"><article class="card card-cyber"><div class="thumb" aria-hidden="true">📱</div><div class="card-body"><span class="tag">Diseño</span><h3 class="h5 mt-1">Prototipo App Móvil</h3><p>Flujo completo de pantallas con enfoque UX minimalista.</p><a href="https://github.com/trejogonzalezangelis-ctrl" target="_blank" rel="noopener noreferrer">Ver en GitHub →</a></div></article></div>
+        </div>
+        <p id="no-results" class="text-muted-c mt-3" hidden>No hay proyectos en esta categoría.</p>
+      </div>
+    </section>
+
+    <!-- EXPERIENCIA (máx. 3, centradas y auto-ajustables) -->
+    <section id="experiencia">
+      <div class="container">
+        <h2 class="section-title">Experiencia laboral</h2>
+        <div class="exp-row">
+          <article class="card card-cyber"><div class="card-body"><span class="period">2025 – Actualidad</span><h3 class="mt-1">Desarrollador Frontend Freelance</h3><p class="text-muted-c mb-0">Sitios web responsivos y portafolios para clientes, con HTML, CSS, JavaScript y Bootstrap.</p></div></article>
+          <article class="card card-cyber"><div class="card-body"><span class="period">2024 – 2025</span><h3 class="mt-1">Prácticas de Desarrollo Web</h3><p class="text-muted-c mb-0">Maquetación, control de versiones con Git y despliegue en GitHub Pages y Vercel.</p></div></article>
+          <article class="card card-cyber"><div class="card-body"><span class="period">2023 – 2024</span><h3 class="mt-1">Diseñador UI/UX Junior</h3><p class="text-muted-c mb-0">Prototipos en Figma y sistemas de diseño para proyectos académicos.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section id="videos">
+      <div class="container">
+        <h2 class="section-title">Videos destacados</h2>
+        <div class="row g-4" id="video-grid">
+          <div class="col-md-6 col-lg-4"><figure><div class="ratio ratio-16x9 ratio-wrap"><iframe src="https://www.youtube-nocookie.com/embed/IGLX8yjwFYY" title="Video destacado 1" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><figcaption>Video destacado 1</figcaption></figure></div>
+          <div class="col-md-6 col-lg-4"><figure><div class="ratio ratio-16x9 ratio-wrap"><iframe src="https://www.youtube-nocookie.com/embed/wUGUTw89fiM" title="Video destacado 2" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><figcaption>Video destacado 2</figcaption></figure></div>
+          <div class="col-md-6 col-lg-4"><figure><div class="ratio ratio-16x9 ratio-wrap"><iframe src="https://www.youtube-nocookie.com/embed/_zEuCk8tlLw" title="Video destacado 3" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><figcaption>Video destacado 3</figcaption></figure></div>
+
+          <!-- 9 TARJETAS ADICIONALES COMENTADAS: quita el comentario y cambia VIDEO_ID para activarlas
+          <div class="col-md-6 col-lg-4"><figure><div class="ratio ratio-16x9 ratio-wrap"><iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID_4" title="Video 4" loading="lazy" allowfullscreen></iframe></div><figcaption>Video 4</figcaption></figure></div>
+          <div class="col-md-6 col-lg-4"><figure><div class="ratio ratio-16x9 ratio-wrap"><iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID_5" title="Video 5" loading="lazy" allowfullscreen></iframe></div><figcaption>Video 5</figcaption></figure></div>
+          <div class="col-md-6 col-lg-4"><figure><div class="ratio ratio-16x9 ratio-wrap"><iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID_6" title="Video 6" loading="lazy" allowfullscreen></iframe></div><figcaption>Video 6</figcaption></figure></div>
+          <div class="col-md-6 col-lg-4"><figure><div class="ratio ratio-16x9 ratio-wrap"><iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID_7" title="Video 7" loading="lazy" allowfullscreen></iframe></div><figcaption>Video 7</figcaption></figure></div>
+          <div class="col-md-6 col-lg-4"><figure><div class="ratio ratio-16x9 ratio-wrap"><iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID_8" title="Video 8" loading="lazy" allowfullscreen></iframe></div><figcaption>Video 8</figcaption></figure></div>
+          <div class="col-md-6 col-lg-4"><figure><div class="ratio ratio-16x9 ratio-wrap"><iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID_9" title="Video 9" loading="lazy" allowfullscreen></iframe></div><figcaption>Video 9</figcaption></figure></div>
+          <div class="col-md-6 col-lg-4"><figure><div class="ratio ratio-16x9 ratio-wrap"><iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID_10" title="Video 10" loading="lazy" allowfullscreen></iframe></div><figcaption>Video 10</figcaption></figure></div>
+          <div class="col-md-6 col-lg-4"><figure><div class="ratio ratio-16x9 ratio-wrap"><iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID_11" title="Video 11" loading="lazy" allowfullscreen></iframe></div><figcaption>Video 11</figcaption></figure></div>
+          <div class="col-md-6 col-lg-4"><figure><div class="ratio ratio-16x9 ratio-wrap"><iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID_12" title="Video 12" loading="lazy" allowfullscreen></iframe></div><figcaption>Video 12</figcaption></figure></div>
+          -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <div class="container">
+        <h2 class="section-title">Contacto</h2>
+        <form id="contact-form" class="panel p-4 mx-auto" style="max-width:640px" novalidate>
+          <div class="mb-3"><label for="user_name" class="form-label">Nombre</label><input id="user_name" name="user_name" type="text" class="form-control" required autocomplete="name"></div>
+          <div class="mb-3"><label for="user_email" class="form-label">Correo electrónico</label><input id="user_email" name="user_email" type="email" class="form-control" required autocomplete="email"></div>
+          <div class="mb-3"><label for="message" class="form-label">Mensaje</label><textarea id="message" name="message" rows="5" class="form-control" required></textarea></div>
+          <button class="btn btn-cyber px-4 py-2" type="submit" id="send-btn">Enviar mensaje</button>
+          <p id="form-status" class="mt-3 mb-0" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p class="footer-title">// CONÉCTATE CONMIGO</p>
+      <!-- Para activar una red: reemplaza el href="#" por tu enlace (LinkedIn, WhatsApp, Instagram, Facebook, Twitter/X) -->
+      <ul class="social" aria-label="Redes sociales">
+        <li><a class="c-sky" href="#" data-red="LinkedIn" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
+        <li><a class="c-yellow" href="https://www.youtube.com/@angel-_-jesustrejogonzales6055" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
+        <li><a class="c-white" href="https://github.com/trejogonzalezangelis-ctrl" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a></li>
+        <li><a class="c-cyan" href="#" data-red="WhatsApp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a></li>
+        <li><a class="c-yellow" href="#" data-red="Instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+        <li><a class="c-sky" href="#" data-red="Facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+        <li><a class="c-white" href="#" data-red="Twitter / X" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+        <li><a class="c-cyan" href="https://vercel.com/angel-7d1b" target="_blank" rel="noopener noreferrer" aria-label="Sitio en Vercel"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2 23 21H1z"/></svg></a></li>
+      </ul>
+      <p class="copy">© <span id="year"></span> Angel Trejo González · Licencia MIT · Hecho con IA y mucho neón ⚡</p>
+    </div>
+  </footer>
+
+  <button id="back-to-top" type="button" aria-label="Volver arriba"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    /* ===== Redes pendientes + botón Volver Arriba ===== */
+    (function footerTools() {
+      // Los enlaces con href="#" todavía no tienen URL: no navegan a ningún lado
+      document.querySelectorAll('.social a[href="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => e.preventDefault());
+        a.setAttribute("title", (a.dataset.red || "Red social") + ": agrega tu enlace en index.html");
+      });
+      const top = document.getElementById("back-to-top");
+      const toggle = () => top.classList.toggle("show", window.scrollY > 400);
+      addEventListener("scroll", toggle, { passive: true });
+      toggle();
+      top.addEventListener("click", () => window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }));
+    })();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* ===== Stack con íconos oficiales (Devicon) ===== */
+    (function stack() {
+      const base = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/";
+      const items = [
+        ["HTML5", "html5/html5-original.svg"], ["CSS3", "css3/css3-original.svg"],
+        ["JavaScript", "javascript/javascript-original.svg"], ["Bootstrap", "bootstrap/bootstrap-original.svg"],
+        ["Git", "git/git-original.svg"], ["GitHub", "github/github-original.svg"],
+        ["Figma", "figma/figma-original.svg"], ["Vercel", "vercel/vercel-original.svg"],
+        ["Node.js", "nodejs/nodejs-original.svg"], ["React", "react/react-original.svg"],
+        ["VS Code", "vscode/vscode-original.svg"], ["Python", "python/python-original.svg"]
+      ];
+      const grid = document.getElementById("stack-grid");
+      items.forEach(([name, path]) => {
+        const col = document.createElement("div");
+        col.className = "col";
+        const card = document.createElement("div");
+        card.className = "tech-card";
+        const img = document.createElement("img");
+        img.src = base + path; img.alt = "Logo de " + name; img.loading = "lazy"; img.width = 52; img.height = 52;
+        const label = document.createElement("span");
+        label.textContent = name;
+        card.append(img, label); col.append(card); grid.append(col);
+      });
+    })();
+
+    /* ===== Fondo Matrix ===== */
+    (function matrix() {
+      const canvas = document.getElementById("matrix");
+      const ctx = canvas.getContext("2d");
+      const chars = "アイウエオカキクケコサシスセソタチツテト0123456789ABCDEF<>{}[]/\\$#".split("");
+      const size = 16;
+      let cols, drops, timer;
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+      function resize() {
+        canvas.width = innerWidth; canvas.height = innerHeight;
+        cols = Math.floor(canvas.width / size);
+        drops = Array.from({ length: cols }, () => Math.random() * -50);
+      }
+      function draw() {
+        ctx.globalAlpha = .08; ctx.fillStyle = css("--bg"); ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.globalAlpha = 1; ctx.fillStyle = css("--matrix"); ctx.font = size + "px 'Share Tech Mono', monospace";
+        for (let i = 0; i < cols; i++) {
+          ctx.fillText(chars[Math.floor(Math.random() * chars.length)], i * size, drops[i] * size);
+          if (drops[i] * size > canvas.height && Math.random() > .975) drops[i] = 0;
+          drops[i]++;
+        }
+      }
+      function start() { clearInterval(timer); if (reduce) { draw(); return; } timer = setInterval(draw, 50); }
+      addEventListener("resize", () => { resize(); start(); });
+      document.addEventListener("visibilitychange", () => document.hidden ? clearInterval(timer) : start());
+      resize(); start();
+    })();
+
+    /* ===== Tema Dark / Light ===== */
+    (function theme() {
+      const root = document.documentElement, btn = document.getElementById("theme-toggle"), icon = document.getElementById("theme-icon");
+      function apply(mode) {
+        root.setAttribute("data-bs-theme", mode);
+        const dark = mode === "dark";
+        icon.textContent = dark ? "☀️" : "🌙";
+        btn.setAttribute("aria-label", dark ? "Cambiar a modo claro" : "Cambiar a modo oscuro");
+        btn.setAttribute("aria-pressed", String(!dark));
+        const c = document.getElementById("matrix"); c.getContext("2d").clearRect(0, 0, c.width, c.height);
+        const m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = dark ? "#05060f" : "#f3f5ff";
+        try { localStorage.setItem("theme", mode); } catch (e) {}
+      }
+      let saved = null; try { saved = localStorage.getItem("theme"); } catch (e) {}
+      apply(saved || "dark");
+      btn.addEventListener("click", () => apply(root.getAttribute("data-bs-theme") === "dark" ? "light" : "dark"));
+    })();
+
+    /* ===== Filtros de proyectos ===== */
+    (function filters() {
+      const buttons = document.querySelectorAll(".filter"), items = document.querySelectorAll(".project-item"), empty = document.getElementById("no-results");
+      buttons.forEach((b) => b.addEventListener("click", () => {
+        buttons.forEach((x) => { x.classList.toggle("active", x === b); x.setAttribute("aria-pressed", String(x === b)); });
+        let visible = 0;
+        items.forEach((it) => { const show = b.dataset.filter === "all" || it.dataset.category === b.dataset.filter; it.classList.toggle("hide", !show); if (show) visible++; });
+        empty.hidden = visible > 0;
+      }));
+    })();
+
+    /* ===== Formulario EmailJS ===== */
+    (function contact() {
+      const PUBLIC_KEY = "TU_PUBLIC_KEY", SERVICE_ID = "TU_SERVICE_ID", TEMPLATE_ID = "TU_TEMPLATE_ID";
+      const form = document.getElementById("contact-form"), status = document.getElementById("form-status"), btn = document.getElementById("send-btn");
+      if (window.emailjs) emailjs.init({ publicKey: PUBLIC_KEY });
+      const say = (m, t) => { status.textContent = m; status.className = t || ""; };
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) { say("Completa todos los campos con un correo válido.", "error"); form.reportValidity(); return; }
+        if (PUBLIC_KEY === "TU_PUBLIC_KEY") { say("Configura tus credenciales de EmailJS en index.html para activar el envío.", "error"); return; }
+        btn.disabled = true; say("Enviando…");
+        try { await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form); say("¡Mensaje enviado! Te responderé pronto.", "ok"); form.reset(); }
+        catch (err) { say("No se pudo enviar el mensaje. Inténtalo más tarde.", "error"); }
+        finally { btn.disabled = false; }
+      });
+    })();
+  </script>
+</body>
+</html>
